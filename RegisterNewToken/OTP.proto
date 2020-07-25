@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+
+package RegisterNewToken;
+
+service RegisterNewToken {
+
+  rpc YubikeyRegister(SetTokenIDReq) returns (SetTokenIDResp) {}
+
+}
+
+// Get the original token to grab KEY ID
+message SetTokenIDReq {
+  string yubikey_otp = 1;
+  int32 userid = 2;
+
+
+}
+
+// Send a message back to tell the user the token was created
+message SetTokenIDResp {
+  string token_created = 1;
+
+}
+
+
