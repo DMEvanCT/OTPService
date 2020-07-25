@@ -8,7 +8,7 @@ import (
 
 
 // This will take the  12 charecters from  the token to generate a key. Then store that key in the database.
-func RegisterNewYubikey(key_otp string, userid int, grpc YubikeyServer) {
+func RegisterNewYubikey(key_otp string, userid int) {
 	// This is the entire OTP it will  use the first 12 chars for key id
 	key_id_to_transform  := []rune(key_otp)
 	// This is the key id for the Yubikey

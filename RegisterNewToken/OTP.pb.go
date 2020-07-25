@@ -122,7 +122,7 @@ func init() {
 }
 
 var fileDescriptor_f0d5baf8df589173 = []byte{
-	// 181 bytes of a gzipped FileDescriptorProto
+	// 189 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xf4, 0x0f, 0x09, 0xd0,
 	0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x12, 0x08, 0x4a, 0x4d, 0xcf, 0x2c, 0x2e, 0x49, 0x2d, 0xf2,
 	0x4b, 0x2d, 0x0f, 0xc9, 0xcf, 0x4e, 0xcd, 0x53, 0xf2, 0xe0, 0xe2, 0x0d, 0x4e, 0x2d, 0x01, 0xb3,
@@ -131,10 +131,10 @@ var fileDescriptor_f0d5baf8df589173 = []byte{
 	0x05, 0x42, 0x62, 0x5c, 0x6c, 0xa5, 0xc5, 0xa9, 0x45, 0x99, 0x29, 0x12, 0x4c, 0x0a, 0x8c, 0x1a,
 	0xac, 0x41, 0x50, 0x9e, 0x92, 0x29, 0x17, 0x1f, 0xb2, 0x49, 0xc5, 0x05, 0x42, 0xca, 0x5c, 0xbc,
 	0x25, 0x20, 0x6e, 0x7c, 0x72, 0x51, 0x6a, 0x62, 0x49, 0x6a, 0x0a, 0xd4, 0x30, 0x1e, 0xb0, 0xa0,
-	0x33, 0x44, 0xcc, 0x28, 0x8b, 0x0b, 0xc3, 0x51, 0x42, 0x61, 0x5c, 0xfc, 0x91, 0x10, 0x0b, 0x61,
-	0x52, 0x42, 0xf2, 0x7a, 0xe8, 0xaa, 0xf4, 0x50, 0xdc, 0x2d, 0xa5, 0x80, 0x5f, 0x41, 0x71, 0x81,
-	0x12, 0x43, 0x12, 0x1b, 0x38, 0x14, 0x8c, 0x01, 0x01, 0x00, 0x00, 0xff, 0xff, 0x17, 0x85, 0xe3,
-	0x6c, 0x12, 0x01, 0x00, 0x00,
+	0x33, 0x44, 0xcc, 0x28, 0x8d, 0x8b, 0x07, 0xac, 0x27, 0x38, 0xb5, 0xa8, 0x2c, 0x33, 0x39, 0x55,
+	0x28, 0x8c, 0x8b, 0x3f, 0x12, 0x62, 0x19, 0xcc, 0xad, 0x42, 0xf2, 0x7a, 0xe8, 0xce, 0xd6, 0x43,
+	0x71, 0xb3, 0x94, 0x02, 0x7e, 0x05, 0xc5, 0x05, 0x4a, 0x0c, 0x49, 0x6c, 0xe0, 0x10, 0x30, 0x06,
+	0x04, 0x00, 0x00, 0xff, 0xff, 0x0f, 0xe5, 0xa7, 0xf4, 0x0e, 0x01, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -145,72 +145,72 @@ var _ grpc.ClientConnInterface
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion6
 
-// RegisterNewTokenClient is the client API for RegisterNewToken service.
+// TokenServiceClient is the client API for TokenService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
-type RegisterNewTokenClient interface {
+type TokenServiceClient interface {
 	YubikeyRegister(ctx context.Context, in *SetTokenIDReq, opts ...grpc.CallOption) (*SetTokenIDResp, error)
 }
 
-type registerNewTokenClient struct {
+type tokenServiceClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewRegisterNewTokenClient(cc grpc.ClientConnInterface) RegisterNewTokenClient {
-	return &registerNewTokenClient{cc}
+func NewTokenServiceClient(cc grpc.ClientConnInterface) TokenServiceClient {
+	return &tokenServiceClient{cc}
 }
 
-func (c *registerNewTokenClient) YubikeyRegister(ctx context.Context, in *SetTokenIDReq, opts ...grpc.CallOption) (*SetTokenIDResp, error) {
+func (c *tokenServiceClient) YubikeyRegister(ctx context.Context, in *SetTokenIDReq, opts ...grpc.CallOption) (*SetTokenIDResp, error) {
 	out := new(SetTokenIDResp)
-	err := c.cc.Invoke(ctx, "/RegisterNewToken.RegisterNewToken/YubikeyRegister", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/RegisterNewToken.TokenService/YubikeyRegister", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-// RegisterNewTokenServer is the server API for RegisterNewToken service.
-type RegisterNewTokenServer interface {
+// TokenServiceServer is the server API for TokenService service.
+type TokenServiceServer interface {
 	YubikeyRegister(context.Context, *SetTokenIDReq) (*SetTokenIDResp, error)
 }
 
-// UnimplementedRegisterNewTokenServer can be embedded to have forward compatible implementations.
-type UnimplementedRegisterNewTokenServer struct {
+// UnimplementedTokenServiceServer can be embedded to have forward compatible implementations.
+type UnimplementedTokenServiceServer struct {
 }
 
-func (*UnimplementedRegisterNewTokenServer) YubikeyRegister(ctx context.Context, req *SetTokenIDReq) (*SetTokenIDResp, error) {
+func (*UnimplementedTokenServiceServer) YubikeyRegister(ctx context.Context, req *SetTokenIDReq) (*SetTokenIDResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method YubikeyRegister not implemented")
 }
 
-func RegisterRegisterNewTokenServer(s *grpc.Server, srv RegisterNewTokenServer) {
-	s.RegisterService(&_RegisterNewToken_serviceDesc, srv)
+func RegisterTokenServiceServer(s *grpc.Server, srv TokenServiceServer) {
+	s.RegisterService(&_TokenService_serviceDesc, srv)
 }
 
-func _RegisterNewToken_YubikeyRegister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _TokenService_YubikeyRegister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SetTokenIDReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RegisterNewTokenServer).YubikeyRegister(ctx, in)
+		return srv.(TokenServiceServer).YubikeyRegister(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/RegisterNewToken.RegisterNewToken/YubikeyRegister",
+		FullMethod: "/RegisterNewToken.TokenService/YubikeyRegister",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RegisterNewTokenServer).YubikeyRegister(ctx, req.(*SetTokenIDReq))
+		return srv.(TokenServiceServer).YubikeyRegister(ctx, req.(*SetTokenIDReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-var _RegisterNewToken_serviceDesc = grpc.ServiceDesc{
-	ServiceName: "RegisterNewToken.RegisterNewToken",
-	HandlerType: (*RegisterNewTokenServer)(nil),
+var _TokenService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "RegisterNewToken.TokenService",
+	HandlerType: (*TokenServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "YubikeyRegister",
-			Handler:    _RegisterNewToken_YubikeyRegister_Handler,
+			Handler:    _TokenService_YubikeyRegister_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

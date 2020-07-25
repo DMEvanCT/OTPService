@@ -3,7 +3,7 @@ syntax = "proto3";
 
 package RegisterNewToken;
 
-service RegisterNewToken {
+service TokenService {
 
   rpc YubikeyRegister(SetTokenIDReq) returns (SetTokenIDResp) {}
 
