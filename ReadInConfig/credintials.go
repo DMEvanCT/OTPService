@@ -45,7 +45,7 @@ func GetSalt() (string) {
 func GetDatabaseName() (string) {
 		err := viper.GetString("OTP.databasename")
 	if err != " " {
-		log.Println("There was an error getting the salt for the hash")
+		log.Println("There was an error getting the database name")
 	}
 	return err
 }

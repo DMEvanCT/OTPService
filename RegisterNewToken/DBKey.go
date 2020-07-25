@@ -22,7 +22,7 @@ func KeyToDatbase(keytype, keyid string, Userid int)  (string) {
 		}
 
 		defer setkey.Rollback()
-		createkeyid, err := setkey.Prepare("UPDATE " + databasename +  "." + tablename +  " SET Yubikey = " +  keyid  + "  WHERE UserID =  (?)")
+		createkeyid, err := setkey.Prepare("UPDATE " + databasename + "." + tablename + "SET Yubikey = " + keyid + " WHERE UserID = (?)")
 		if err != nil {
 			Logging.LogForMSInfo(err)
 		}
